@@ -14,16 +14,16 @@ function Library(){
   }
 }
 
-function Book(title, author, genre, pages, favourite, status){
+function Book(title, author, genre, pages, favourite, readStatus){
  this.title = title;
  this.author = author;
  this.genre = genre;
  this.totalPages = pages;
  this.favourite = favourite;
- this.status = status;
+ this.Readstatus = status;
 
  this.getInfo = function(){
-  return [title,author,genre,totalPages,favourite,status];
+  return [title,author,genre,totalPages,favourite,readStatus];
  }
 }
 
