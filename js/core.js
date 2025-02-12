@@ -1,4 +1,20 @@
+const FORM_CONTAINER = document.querySelector("#form-container");
+const FORM_ADD_BOOK = document.querySelector("#form-add-book");
 const BUT_ADD_BOOK = document.querySelector("#add-book");
+const BUT_CLOSE_FORM = document.querySelector("#form-close");
+
+BUT_ADD_BOOK.addEventListener("click",(e) =>{
+  FORM_CONTAINER.style.display = "block";
+})
+
+BUT_CLOSE_FORM.addEventListener("click",(e) =>{
+  FORM_CONTAINER.style.display = "none";
+  FORM_ADD_BOOK.reset();
+});
+
+function closeForm(){
+
+}
 
 function Library(){
   this.books = [];

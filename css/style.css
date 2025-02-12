@@ -93,7 +93,7 @@ button.but-icon{
 }
 
 /* Main */
-#blur-container{
+#form-container{
   /* display: none; */
   position: absolute;
   top: 0;
@@ -109,9 +109,9 @@ button.but-icon{
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
+  height: auto;
   width: 400px;
-  height: 600px;
-  padding: 1rem 3rem;
+  padding: 2rem 3rem;
   background-color: white;
 }
 
@@ -146,4 +146,11 @@ button[type="submit"]{
 
 .red{
   color: red;
+}
+
+#form-close{
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
 }
