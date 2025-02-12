@@ -1,0 +1,88 @@
+:root{
+  --primary-bg: #419aff;
+  --primary-text: white;
+}
+
+/* Uses joshwcomeau CSS Reset */
+/* Global */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Roboto", serif;
+}
+
+/* Media */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Forms */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* Text */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/* Root Stacking Context */
+#root, #__next {
+  isolation: isolate;
+}
+
+header nav{
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  height: fit-content;
+  width: 100%;
+  background-color: red;
+  padding: 16px 64px;
+}
+
+#logo{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#logo .material-symbols-outlined{
+  font-size: 2rem;
+}
+
+#logo p{
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+button{
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  height: fit-content;
+  color: var(--primary-text);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  background-color: var(--primary-bg);
+  border-radius: 32px;
+  border: none;
+  cursor: pointer;
+}
