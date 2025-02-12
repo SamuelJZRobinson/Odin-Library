@@ -14,7 +14,7 @@ function Library(){
   }
 }
 
-function Book(title, author, genre, pages, favourite, readStatus){
+function Book(title, author, genre, pages, favourite, status){
  this.title = title;
  this.author = author;
  this.genre = genre;
@@ -23,7 +23,7 @@ function Book(title, author, genre, pages, favourite, readStatus){
  this.Readstatus = status;
 
  this.getInfo = function(){
-  return [title,author,genre,totalPages,favourite,readStatus];
+  return [title,author,genre,totalPages,favourite,status];
  }
 }
 

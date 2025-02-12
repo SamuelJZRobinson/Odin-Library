@@ -20,10 +20,41 @@
         <span class="material-symbols-outlined">book_2</span>
         <p>Library</p>
       </div>
-      <button id="add-book"><span class="material-symbols-outlined">add</span>Add Book</button>
+      <button id="add-book" class="but-icon"><span class="material-symbols-outlined">add</span>Add Book</button>
     </nav>
   </header>
-  
+  <main>
+    <div id="blur-container">
+      <form id="form-add-book">
+        <h2>Add book</h2>
+        <label for="title">Title<span class="red"> *</span></label>
+        <input type="text" id="title" name="title" required maxlength="256">
+        <label for="author">Author<span class="red"> *</span></label>
+        <input type="text" id="author" name="author" required maxlength="256">
+
+        <label for="genre">Genre<span class="red"> *</span></label>
+        <select id="genre" name="genre" required>
+          <option value="self-help">Fantasy</option>
+          <option value="romance">Romance</option>
+          <option value="crime">Crime</option>
+          <option value="self-help">Self-help</option>
+          <option value="religion">Religion</option>
+        </select>
+
+        <label for="total-pages">Total Pages<span class="red"> *</span></label>
+        <input type="number" id="total-pages" name="total-pages" required max="99999">
+
+        <label for="readStatus">Read Status</label>
+        <input type="checkbox" id="readStatus" name="readStatus">
+
+        <label for="favourite">Favourite</label>
+        <input type="checkbox" id="favourite" name="favourite">
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </main>
+
   <!-- JS -->
   <script src="js/core.js"></script>
 </body>
