@@ -56,7 +56,7 @@ header nav{
   height: fit-content;
   width: 100%;
   background-color: red;
-  padding: 1rem 4rem;
+  padding: 1rem 10%;
 }
 
 #logo{
@@ -100,6 +100,7 @@ button.but-icon{
   left: 0;
   height: 100vh;
   width: 100%;
+  z-index: 1;
   background-color: rgba(0,0,0,30%);
   backdrop-filter: blur(10px);
 }
@@ -149,6 +150,37 @@ button[type="submit"]{
 }
 
 #but-close{
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
+
+#card-container{
+  display: grid;
+  height: fit-content;
+  width: 100%;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+  grid-template-rows: auto;
+  padding: 2rem 10%;
+  background-color: yellow;
+}
+
+.card{
+  position: relative;
+  height: 300px;
+  width: 100%;
+  background-color: gray;
+  padding: 1rem;
+}
+
+.card .title{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.but-delete{
   position: absolute;
   top: 1rem;
   right: 1rem;
