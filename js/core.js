@@ -28,6 +28,17 @@ class Library{
     });
   }
 
+  toggleReadStatus(title){
+    this.books.forEach(book => {
+      if (book.title == title){
+        book.readStatus = !book.readStatus;
+        console.log(library.books);
+        this.showBooks();
+        return;
+      }
+    });
+  }
+
   showBooks(){
     // Clear previous books
     CARD_CONTAINER.innerHTML = "";
@@ -53,6 +64,16 @@ class Library{
 
       const BUT_READ = document.createElement("button");
       BUT_READ.textContent = "Read";
+      BUT_READ.addEventListener("click",(e)=>{
+        console.log(TITLE.textContent);
+        library.toggleReadStatus(TITLE.textContent);
+      });
+      if(book.readStatus){
+        BUT_READ.classList.add("filled");
+      }  
+      else{
+        BUT_READ.classList.add("outline");
+      }    
 
       const BUT_REMOVE = document.createElement("span");
       BUT_REMOVE.textContent = "delete";
@@ -78,10 +99,6 @@ class Book{
     this.totalPages = pages;
     this.readStatus = readStatus;
   }
-
- getAllInfo(){
-  return [this,title, this.author,this.genre, this.totalPages, this.readStatus];
- }
 }
 
 // Create Library

@@ -2,6 +2,7 @@
   --primary-bg: #419aff;
   --primary-subtle-bg: #d3e8ff;
   --primary-text: white;
+  --gray-bg: #dbdbdb;
 }
 
 /* Uses joshwcomeau CSS Reset */
@@ -55,14 +56,18 @@ header nav{
   align-items: center;
   height: fit-content;
   width: 100%;
-  background-color: red;
   padding: 1rem 10%;
+  background-color: var(--gray-bg);
+  box-shadow: 0px 5px 5px 0px rgba(0,0,0,30%);
+  -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,30%);
+  -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,30%);
 }
 
 #logo{
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  color: rgba(0,0,0,90%);
 }
 
 #logo .material-symbols-outlined{
@@ -80,10 +85,18 @@ button{
   font-size: 1rem;
   font-weight: 500;
   padding: 0.5rem 1rem;
-  background-color: var(--primary-bg);
   border-radius: 32px;
   border: none;
   cursor: pointer;
+}
+
+button.filled{
+  background-color: var(--primary-bg);
+}
+
+button.outline{
+  color: var(--primary-bg);
+  border: 2px var(--primary-bg) solid;
 }
 
 button.but-icon{
@@ -164,15 +177,17 @@ button[type="submit"]{
   grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
   grid-template-rows: auto;
   padding: 2rem 10%;
-  background-color: yellow;
 }
 
 .card{
   position: relative;
-  height: 300px;
+  height: 200px;
   width: 100%;
-  background-color: gray;
+  background-color: var(--gray-bg);
   padding: 1rem;
+  box-shadow: 0px 5px 5px 0px rgba(0,0,0,30%);
+  -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,30%);
+  -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,30%);
 }
 
 .card .title{
