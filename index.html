@@ -20,13 +20,14 @@
         <span class="material-symbols-outlined">book_2</span>
         <p>Library</p>
       </div>
-      <button id="add-book" class="but-icon"><span class="material-symbols-outlined">add</span>Add Book</button>
+      <button id="but-open" class="but-icon"><span class="material-symbols-outlined">add</span>Add Book</button>
     </nav>
   </header>
   <main>
     <div id="form-container">
       <form id="form-add-book">
-        <span id="form-close" class="material-symbols-outlined">close</span>
+        <span id="but-close" class="material-symbols-outlined">close</span>
+
         <h2>Add book</h2>
         <label for="title">Title<span class="red"> *</span></label>
         <input type="text" id="title" name="title" required maxlength="256">
@@ -45,13 +46,13 @@
         <label for="total-pages">Total Pages<span class="red"> *</span></label>
         <input type="number" id="total-pages" name="total-pages" required max="99999">
 
-        <label for="readStatus">Read Status</label>
-        <input type="checkbox" id="readStatus" name="readStatus">
+        <label for="read-status">Read Status</label>
+        <input type="checkbox" id="read-status" name="read-status">
 
         <label for="favourite">Favourite</label>
         <input type="checkbox" id="favourite" name="favourite">
 
-        <button type="submit">Submit</button>
+        <button type="submit" id="but-submit">Submit</button>
       </form>
     </div>
   </main>

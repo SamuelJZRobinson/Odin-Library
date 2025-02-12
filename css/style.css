@@ -94,7 +94,7 @@ button.but-icon{
 
 /* Main */
 #form-container{
-  /* display: none; */
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -148,7 +148,7 @@ button[type="submit"]{
   color: red;
 }
 
-#form-close{
+#but-close{
   position: absolute;
   top: 1rem;
   right: 1rem;
