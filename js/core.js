@@ -30,7 +30,7 @@ FORM_ADD_BOOK.addEventListener("submit",(e) =>{
   const READ_STATUS = document.querySelector("#read-status").checked;
   const NEW_BOOK = new Book(TITLE, AUTHOR, GENRE, TOTAL_PAGES, READ_STATUS);
 
-  const BOOK_EXISTS = library.books.some(book => book.title === TITLE);
+  const BOOK_EXISTS = library.books.some(book => book.title.toLowerCase() === TITLE.toLowerCase());
   if (BOOK_EXISTS) {
     alert("A book with this title already exists.");
   }
