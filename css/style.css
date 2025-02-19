@@ -1,8 +1,8 @@
 :root{
-  --primary-bg: #419aff;
-  --primary-subtle-bg: #d3e8ff;
+  --primary-bg: hsl(212, 100%, 60%);
+  --primary-subtle-bg: hsl(212, 100%, 94%);
   --primary-text: white;
-  --gray-bg: #dbdbdb;
+  --text-black: rgba(0,0,0,85%);
 }
 
 /* Uses joshwcomeau CSS Reset */
@@ -40,6 +40,7 @@ p, h1, h2, h3, h4, h5, h6 {
 p {
   text-wrap: pretty;
 }
+
 h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
@@ -50,63 +51,62 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Header */
-header nav{
+header nav {
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
   height: fit-content;
   width: 100%;
   padding: 1rem 10%;
-  background-color: var(--gray-bg);
+  background-color: #c4a775;
   box-shadow: 0px 5px 5px 0px rgba(0,0,0,30%);
   -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,30%);
   -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,30%);
 }
 
-#logo{
+#logo {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: rgba(0,0,0,90%);
+  color: var(--text-black);
 }
 
-#logo .material-symbols-outlined{
+#logo .material-symbols-outlined {
   font-size: 2rem;
 }
 
-#logo p{
+#logo p {
   font-size: 2rem;
   font-weight: 500;
 }
 
-button{
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: fit-content;
-  color: var(--primary-text);
+  gap: 0.5rem;
   font-size: 1rem;
   font-weight: 500;
+  color: var(--primary-text);
   padding: 0.5rem 1rem;
   border-radius: 32px;
   border: none;
   cursor: pointer;
 }
 
-button.filled{
+button.filled {
+  color: var(--primary-text);
   background-color: var(--primary-bg);
 }
 
-button.outline{
+button.outline {
   color: var(--primary-bg);
   border: 2px var(--primary-bg) solid;
 }
 
-button.but-icon{
-  display: inline-flex;
-  gap: 8px;
-  align-items: center;
-}
-
 /* Main */
-#form-container{
+#form-container {
   display: none;
   position: absolute;
   top: 0;
@@ -116,9 +116,10 @@ button.but-icon{
   z-index: 1;
   background-color: rgba(0,0,0,30%);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
-#form-add-book{
+#form-add-book {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -129,48 +130,68 @@ button.but-icon{
   background-color: white;
 }
 
-#form-add-book label{
-  display: block;
+#form-add-book h2 {
+  color: var(--text-black);
 }
 
-#form-add-book input:not(input[type="checkbox"]), #form-add-book select{
+#close-form {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+  color: var(--text-black);
+}
+
+legend.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+#form-add-book label {
+  display: block;
+  color: var(--text-black);
+}
+
+#form-add-book input:not(input[type="checkbox"]), #form-add-book select {
   width: 100%;
   height: 2rem;
+  color: var(--text-black);
   border-radius: 0.5rem;
   margin-bottom: 1rem;
   background-color: var(--primary-subtle-bg);
   border: 1px rgba(0,0,0,15%) solid;
 }
 
-#form-add-book input:focus{
+#form-add-book input:focus {
   outline: 1px var(--primary-bg) solid;
 }
 
-input[type="checkbox"]{
+input[type="checkbox"] {
   width: 1.25rem;
   height: 1.25rem;
   margin-bottom: 1rem;
   accent-color: var(--primary-bg);
 }
 
-button[type="submit"]{
+button[type="submit"] {
   width: 100%;
-  text-align: center;
 }
 
-.red{
+.required {
   color: red;
 }
 
-#but-close{
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  cursor: pointer;
-}
-
-#card-container{
+#card-container {
   display: grid;
+  min-height: 100vh;
   height: fit-content;
   width: 100%;
   gap: 16px;
@@ -179,25 +200,38 @@ button[type="submit"]{
   padding: 2rem 10%;
 }
 
-.card{
+.card {
   position: relative;
   height: 200px;
   width: 100%;
-  background-color: var(--gray-bg);
+  background-color: hsl(0, 0%, 90%);
   padding: 1rem;
   box-shadow: 0px 5px 5px 0px rgba(0,0,0,30%);
   -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,30%);
   -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,30%);
 }
 
-.card .title{
+.card .title {
   font-size: 1.5rem;
   font-weight: bold;
 }
 
-.but-delete{
+span.delete {
   position: absolute;
   top: 1rem;
   right: 1rem;
   cursor: pointer;
+}
+
+/* Footer */
+footer {
+  height: auto;
+  width: 100%;
+  background-color: hsl(0, 0%, 40%);
+}
+
+#copyright{
+  text-align: center;
+  color: var(--primary-text);
+  padding: 3rem 0rem;
 }

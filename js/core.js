@@ -1,23 +1,54 @@
-// DOM Elements
+// DOM
 const FORM_CONTAINER = document.querySelector("#form-container");
 const FORM_ADD_BOOK = document.querySelector("#form-add-book");
-const BUT_OPEN_FORM = document.querySelector("#but-open");
-const BUT_CLOSE_FORM = document.querySelector("#but-close");
+const BUT_OPEN_FORM = document.querySelector("#open-form");
+const BUT_CLOSE_FORM = document.querySelector("#close-form");
 const CARD_CONTAINER = document.querySelector("#card-container");
 
-class Library{
+// Events
+// Open Form
+BUT_OPEN_FORM.addEventListener("click",(e) =>{
+  FORM_CONTAINER.style.display = "block";
+})
+
+// Close Form
+BUT_CLOSE_FORM.addEventListener("click",(e) =>{
+  closeForm();
+})
+
+// Submit Form
+FORM_ADD_BOOK.addEventListener("submit",(e) =>{
+  const title = document.querySelector("#title").value.trim();
+  const author = document.querySelector("#author").value.trim();
+  const genre = document.querySelector("#genre").value;
+  const totalPages = parseInt(document.querySelector("#total-pages").value);
+  const readStatus = document.querySelector("#read-status").checked;
+
+  library.addBook(title, author, genre, totalPages, readStatus);
+
+  closeForm();
+  e.preventDefault();
+})
+
+// Core Logic
+function closeForm() {
+  FORM_CONTAINER.style.display = "none";
+  FORM_ADD_BOOK.reset();
+}
+
+class Library {
   constructor(){
     this.books = [];
   }
     
-  addBook(title, author, genre, pages, readStatus){
+  addBook(title, author, genre, pages, readStatus) {
     const newBook = new Book(title, author, genre, pages, readStatus);
     this.books.push(newBook);
     console.log(library.books);
     this.showBooks();
   }
 
-  removeBook(title){
+  removeBook(title) {
     this.books.forEach(book => {
       if (book.title == title){
         this.books.pop();
@@ -28,7 +59,7 @@ class Library{
     });
   }
 
-  toggleReadStatus(title){
+  toggleReadStatus(title) {
     this.books.forEach(book => {
       if (book.title == title){
         book.readStatus = !book.readStatus;
@@ -39,7 +70,7 @@ class Library{
     });
   }
 
-  showBooks(){
+  showBooks() {
     // Clear previous books
     CARD_CONTAINER.innerHTML = "";
 
@@ -75,15 +106,15 @@ class Library{
         BUT_READ.classList.add("outline");
       }    
 
-      const BUT_REMOVE = document.createElement("span");
-      BUT_REMOVE.textContent = "delete";
-      BUT_REMOVE.classList.add("material-symbols-outlined");
-      BUT_REMOVE.classList.add("but-delete");
-      BUT_REMOVE.addEventListener("click",(e) =>{
+      const BUT_DELETE = document.createElement("span");
+      BUT_DELETE.textContent = "delete";
+      BUT_DELETE.classList.add("material-symbols-outlined");
+      BUT_DELETE.classList.add("delete");
+      BUT_DELETE.addEventListener("click",(e) =>{
         library.removeBook(TITLE.textContent);
       });
 
-      CARD.append(TITLE,AUTHOR,GENRE,TOTAL_PAGES,BUT_READ,BUT_REMOVE);
+      CARD.append(TITLE,AUTHOR,GENRE,TOTAL_PAGES,BUT_READ,BUT_DELETE);
 
       // Append container
       CARD_CONTAINER.appendChild(CARD);
@@ -91,7 +122,7 @@ class Library{
   }
 }
 
-class Book{
+class Book {
   constructor(title, author, genre, pages, readStatus) {
     this.title = title;
     this.author = author;
@@ -103,32 +134,3 @@ class Book{
 
 // Create Library
 const library = new Library();
-
-// Open Form
-BUT_OPEN_FORM.addEventListener("click",(e) =>{
-  FORM_CONTAINER.style.display = "block";
-})
-
-// Close Form
-BUT_CLOSE_FORM.addEventListener("click",(e) =>{
-  closeForm();
-})
-
-function closeForm() {
-  FORM_CONTAINER.style.display = "none";
-  FORM_ADD_BOOK.reset();
-}
-
-// Submit Form
-FORM_ADD_BOOK.addEventListener("submit",(e)=>{
-  const title = document.querySelector("#title").value.trim();
-  const author = document.querySelector("#author").value.trim();
-  const genre = document.querySelector("#genre").value;
-  const totalPages = parseInt(document.querySelector("#total-pages").value);
-  const readStatus = document.querySelector("#read-status").checked;
-
-  library.addBook(title, author, genre, totalPages, readStatus);
-
-  closeForm();
-  e.preventDefault();
-})
