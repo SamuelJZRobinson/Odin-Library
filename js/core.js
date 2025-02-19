@@ -32,7 +32,7 @@ FORM_ADD_BOOK.addEventListener("submit",(e) =>{
 
   const BOOK_EXISTS = library.books.some(book => book.title === TITLE);
   if (BOOK_EXISTS) {
-    alert("This book already exists");
+    alert("A book with this title already exists.");
   }
   else {
     library.addBook(NEW_BOOK);
