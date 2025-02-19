@@ -41,31 +41,58 @@ FORM_ADD_BOOK.addEventListener("submit",(e) =>{
 })
 
 // Core Logic
+/**
+ * Closes the pop-up add book form and resets input data.
+ */
 function closeForm() {
   FORM_CONTAINER.style.display = "none";
   FORM_ADD_BOOK.reset();
 }
 
+/**
+ * A library that manages books.
+ */
 class Library {
   constructor(){
     this.books = [];
   }
-    
+ 
+  /**
+   * Appends a book object to the library book list.
+   * Updates the book card UI.
+   * 
+   * @param {*} newBook Object book
+   */
   addBook(newBook) {
     this.books.push(newBook);
     this.updateBookUI();
   }
 
+  /**
+   * Removes a book object from the library book list using an index.
+   * Updates the book card UI.
+   * 
+   * @param {*} index Int index of book object.
+   */
   removeBook(index) {
     this.books.splice(index, 1);
     this.updateBookUI();
   }
 
+  /**
+   * Toogles the read status of a book object in the library book list using an index.
+   * Updates the book card UI.
+   * 
+   * @param {*} index Int index of book object.
+   */
   toggleRead(index) {
       this.books[index].toggleRead();
       this.updateBookUI();
   }
 
+  /**
+   * Updates the book card UI by removing and inserting all book object data from the library book list as cards.
+   */
   updateBookUI() {
     BOOK_CONTAINER.innerHTML = "";
 
@@ -87,6 +114,9 @@ class Library {
   }
 }
 
+/**
+ * A book that stores general details and the user's relationship to it.
+ */
 class Book {
   constructor(title, author, genre, pages, readStatus) {
     this.title = title;
@@ -96,6 +126,9 @@ class Book {
     this.readStatus = readStatus;
   }
 
+  /**
+   * Toggles the book's binary read status.
+   */
   toggleRead() {
     this.readStatus = !this.readStatus;
   }
