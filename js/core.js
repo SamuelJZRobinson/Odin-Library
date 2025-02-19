@@ -18,16 +18,15 @@ BUT_CLOSE_FORM.addEventListener("click",(e) =>{
 
 // Submit Form
 FORM_ADD_BOOK.addEventListener("submit",(e) =>{
+  e.preventDefault();
   const title = document.querySelector("#title").value.trim();
   const author = document.querySelector("#author").value.trim();
   const genre = document.querySelector("#genre").value;
   const totalPages = parseInt(document.querySelector("#total-pages").value);
   const readStatus = document.querySelector("#read-status").checked;
-
-  library.addBook(title, author, genre, totalPages, readStatus);
-
+  const NEW_BOOK = new Book(title, author, genre, totalPages, readStatus);
+  library.addBook(NEW_BOOK);
   closeForm();
-  e.preventDefault();
 })
 
 // Core Logic
@@ -41,10 +40,8 @@ class Library {
     this.books = [];
   }
     
-  addBook(title, author, genre, pages, readStatus) {
-    const newBook = new Book(title, author, genre, pages, readStatus);
+  addBook(newBook) {
     this.books.push(newBook);
-    console.log(library.books);
     this.showBooks();
   }
 
@@ -52,7 +49,6 @@ class Library {
     this.books.forEach(book => {
       if (book.title == title){
         this.books.pop();
-        console.log(library.books);
         this.showBooks();
         return;
       }
