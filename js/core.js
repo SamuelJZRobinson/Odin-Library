@@ -3,7 +3,7 @@ const FORM_CONTAINER = document.querySelector("#form-container");
 const FORM_ADD_BOOK = document.querySelector("#form-add-book");
 const BUT_OPEN_FORM = document.querySelector("#open-form");
 const BUT_CLOSE_FORM = document.querySelector("#close-form");
-const CARD_CONTAINER = document.querySelector("#card-container");
+const BOOK_CONTAINER = document.querySelector("#book-container");
 
 // Events
 // Open Form
@@ -72,13 +72,13 @@ class Library {
 
   showBooks() {
     // Clear previous books
-    CARD_CONTAINER.innerHTML = "";
+    BOOK_CONTAINER.innerHTML = "";
 
     // Create cards for all books
     this.books.forEach(book => {
       // Prepare card
-      const CARD = document.createElement("div");
-      CARD.classList.add("card");
+      const BOOK_CARD = document.createElement("div");
+      BOOK_CARD.classList.add("book-card");
 
       const TITLE = document.createElement("p");
       TITLE.textContent = `${book.title}`;
@@ -103,7 +103,7 @@ class Library {
         BUT_READ.classList.add("filled");
       }  
       else{
-        BUT_READ.classList.add("outline");
+        BUT_READ.classList.add("outlined");
       }    
 
       const BUT_DELETE = document.createElement("span");
@@ -114,10 +114,10 @@ class Library {
         library.removeBook(TITLE.textContent);
       });
 
-      CARD.append(TITLE,AUTHOR,GENRE,TOTAL_PAGES,BUT_READ,BUT_DELETE);
+      BOOK_CARD.append(TITLE,AUTHOR,GENRE,TOTAL_PAGES,BUT_READ,BUT_DELETE);
 
       // Append container
-      CARD_CONTAINER.appendChild(CARD);
+      BOOK_CONTAINER.appendChild(BOOK_CARD);
     });
   }
 }
