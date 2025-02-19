@@ -1,3 +1,6 @@
+// Tutorials Used:
+// Dors Coding School. (16 February 2023). THE ODIN PROJECT: LIBRARY | PROJECT SOLUTION. YouTube. https://youtu.be/9YGgC1WPpf4?si=FaXysCqYdWZeKfnr
+
 // DOM
 const FORM_CONTAINER = document.querySelector("#form-container");
 const FORM_ADD_BOOK = document.querySelector("#form-add-book");
@@ -42,79 +45,40 @@ class Library {
     
   addBook(newBook) {
     this.books.push(newBook);
-    this.showBooks();
+    console.log(this.books)
+    this.updateBookUI();
   }
 
-  removeBook(title) {
-    this.books.forEach(book => {
-      if (book.title == title){
-        this.books.pop();
-        this.showBooks();
-        return;
-      }
-    });
+  removeBook(index) {
+    this.books.splice(index, 1);
+    console.log(this.books)
+    this.updateBookUI();
   }
 
-  toggleReadStatus(title) {
-    this.books.forEach(book => {
-      if (book.title == title){
-        book.readStatus = !book.readStatus;
-        console.log(library.books);
-        this.showBooks();
-        return;
-      }
-    });
+  toggleRead(index) {
+      this.books[index].toggleRead();
+      console.log(library.books);
+      this.updateBookUI();
   }
 
-  showBooks() {
-    // Clear previous books
+  updateBookUI() {
     BOOK_CONTAINER.innerHTML = "";
 
-    // Create cards for all books
-    this.books.forEach(book => {
-      // Prepare card
+    for (let i = 0; i < library.books.length; i++) {
+      let book = library.books[i];
       const BOOK_CARD = document.createElement("div");
       BOOK_CARD.classList.add("book-card");
+      BOOK_CARD.innerHTML = `
+      <p class="title">${book.title}</p>
+      <p>${book.author}</p>
+      <p>${book.genre}</p>
+      <p>${book.totalPages}</p>
+      <span class="material-symbols-outlined delete" onclick="library.removeBook(${i})">delete</span>
+      <button class="toggle-read ${book.readStatus ? 'filled' : 'outlined'}" onclick="library.toggleRead(${i})">Read</button>
+      `;
 
-      const TITLE = document.createElement("p");
-      TITLE.textContent = `${book.title}`;
-      TITLE.classList.add("title");
-
-      const AUTHOR = document.createElement("p");
-      AUTHOR.textContent = `${book.author}`;
-
-      const GENRE = document.createElement("p");
-      GENRE.textContent = `${book.genre}`;
-
-      const TOTAL_PAGES = document.createElement("p");
-      TOTAL_PAGES.textContent = `${book.totalPages} Pages`;
-
-      const BUT_READ = document.createElement("button");
-      BUT_READ.textContent = "Read";
-      BUT_READ.addEventListener("click",(e)=>{
-        console.log(TITLE.textContent);
-        library.toggleReadStatus(TITLE.textContent);
-      });
-      if(book.readStatus){
-        BUT_READ.classList.add("filled");
-      }  
-      else{
-        BUT_READ.classList.add("outlined");
-      }    
-
-      const BUT_DELETE = document.createElement("span");
-      BUT_DELETE.textContent = "delete";
-      BUT_DELETE.classList.add("material-symbols-outlined");
-      BUT_DELETE.classList.add("delete");
-      BUT_DELETE.addEventListener("click",(e) =>{
-        library.removeBook(TITLE.textContent);
-      });
-
-      BOOK_CARD.append(TITLE,AUTHOR,GENRE,TOTAL_PAGES,BUT_READ,BUT_DELETE);
-
-      // Append container
       BOOK_CONTAINER.appendChild(BOOK_CARD);
-    });
+    }
   }
 }
 
@@ -125,6 +89,10 @@ class Book {
     this.genre = genre;
     this.totalPages = pages;
     this.readStatus = readStatus;
+  }
+
+  toggleRead() {
+    this.readStatus = !this.readStatus;
   }
 }
 
