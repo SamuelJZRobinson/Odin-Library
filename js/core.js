@@ -53,19 +53,16 @@ class Library {
     
   addBook(newBook) {
     this.books.push(newBook);
-    console.log(this.books)
     this.updateBookUI();
   }
 
   removeBook(index) {
     this.books.splice(index, 1);
-    console.log(this.books)
     this.updateBookUI();
   }
 
   toggleRead(index) {
       this.books[index].toggleRead();
-      console.log(library.books);
       this.updateBookUI();
   }
 
